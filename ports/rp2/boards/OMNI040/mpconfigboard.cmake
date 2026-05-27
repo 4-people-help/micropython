@@ -1,0 +1,17 @@
+# mpconfigboard.cmake
+
+# 1. 彻底抛弃 pico 包袱，告诉 SDK 使用我们自己的板子名字
+set(PICO_BOARD "omni040" CACHE STRING "Board name" FORCE)
+
+# 2. 告诉底层 C SDK：去当前目录寻找 omni040.h 这个硬件定义文件！
+set(PICO_BOARD_HEADER_DIRS "${CMAKE_CURRENT_LIST_DIR}" CACHE PATH "Board directory" FORCE)
+
+# 3. MicroPython 层的配置
+# set(MICROPY_BOARD_FLASH_SIZE "2M")
+if(NOT DEFINED MICROPY_HW_FLASH_STORAGE_BYTES)
+    set(MICROPY_HW_FLASH_STORAGE_BYTES 1441792)  # 1408 * 1024
+endif()
+set(MICROPY_HW_USB_VID "0x2E8A") 
+set(MICROPY_HW_USB_PID "0x0005") 
+set(MICROPY_HW_USB_MANUFACTURER_STRING "OmniDebug")
+set(MICROPY_HW_USB_PRODUCT_STRING "Omni040 RP2040")
