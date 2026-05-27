@@ -10,6 +10,7 @@
 
 // 启用最保守的通用单线 SPI 启动代码 (03h 慢速模式)
 #define PICO_BOOT_STAGE2_CHOOSE_GENERIC_03H 1
+// #define PICO_BOOT_STAGE2_CHOOSE_IS25LP080 1
 
 // 这里的容量保持不变，HX25Q16 就是 2MB
 #define PICO_FLASH_SPI_CLKDIV 2
